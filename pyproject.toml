@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dreamerv3-multi-agent-grid-traffic"
+version = "0.1.0"
+description = "DreamerV3-based multi-agent grid traffic task with baseline reinforcement learning comparisons."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "ipython",
+    "jupyter",
+    "matplotlib",
+    "numpy",
+    "torch",
+    "tqdm",
+]
+
+[project.scripts]
+grid-traffic = "grid_traffic.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/grid_traffic"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
